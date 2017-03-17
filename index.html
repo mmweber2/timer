@@ -19,7 +19,7 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 80px;
+  padding: 14px 50px;
   font-size: 1.5em;
   text-decoration: none;
 }
@@ -53,6 +53,26 @@ div {
 		<h1>Auction Timer</h1>
 	</head>
 	<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<p>A timer service to help you win your online auctions!</p>
+	<p>The current time is:</p><h1 id="currentTime"></h1>
+    <!--Use absolute URL for testing.
+    <script src="/toz/js/moment.js"></script>-->
+    <script src="http://pokeai.net/toz/js/moment.js"></script>
+	<script type='text/javascript'>
+	var datetime;
+	var outputFormat = "dddd, MMMM Do YYYY [at] h:mm:ss a";
+	
+	function update (){
+	  datetime.html(moment().format(outputFormat));
+	 }
+	
+	$(document).ready(function() {
+	  datetime = $('#currentTime');
+	  update();
+	  setInterval(update, 1000);
+	});
+	document.getElementById("currentTime").innerHTML = datetime;
+    </script>
 	</body>
 </html>
