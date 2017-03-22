@@ -42,6 +42,16 @@ div.form {
   margin-bottom: 50px;
   font-size: 2em;
 }
+div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #4682B4;
+    border-radius: 4px;
+    font-size: 0.5em;
+}
+  
 input[type=text], select {
   font-size: .5em;
   margin: auto;
@@ -308,7 +318,8 @@ input[type=submit] {
     <input type="submit" value="Submit">
     </form>
     </div>
-	<p>The current time is:</p><h1 id="currentTime"></h1>
+    <div class="fixed">
+	<p>The current time is:</p><p id="currentTime"></p></div>
     <!--Use absolute URL for testing.
     <script src="/toz/js/moment.js"></script>-->
     <script src="http://pokeai.net/toz/js/moment.js"></script>
