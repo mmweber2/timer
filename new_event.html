@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	<style>
+body {
+  background-color: white;
+}
+h1 {
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+li {
+  display: inline;
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 50px;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #9ACD32;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4682B4;
+}
+div.form {
+  margin: auto;
+  width: 75%;
+  border: 20px #9ACD32;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 2em;
+}
+input[type=text], select {
+  font-size: .5em;
+  margin: auto;
+  width: 400px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #4682B4;
+  border-radius: 4px;
+  #box-sizing: border-boxXXX;
+}
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 500px;
+    padding: 12px 20px;
+}
+input[type=text] {
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+    width: 100%;
+}
+input[type=submit] {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  width: 50%;
+  background-color: green;
+  color: GreenYellow;
+  padding: 14px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+	</style>
+		<title>Create An Event</title>
+		<script></script>
+		<ul>
+		<li><a class="active" href="/index.html">Home</a></li>
+		<li><a href="/new_event.html">Make a new event</a></li>
+		<li><a href="/edit_event.html">Edit an event</a></li>
+		<li><a href="/about.html">About</a></li>
+		</ul>
+		<h1>Create An Event</h1>
+	</head>
+	<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<div class="form">
+	  <form action="/submit.html">
+	    <div><label for="lname">Auction Name</label></div>
+	    <div><input type="text" id="lname" name="labelname" placeholder="What would you like to call this auction?"></div>
+	
+	    <div><label for="alink">Auction Link</label></div>
+	    <div><input type="text" id="alink" name="linkname" placeholder="What is the link for the auction?"></div>
+	
+	    <div><label for="atz">Auction Time Zone</label></div>
+	    <div id="timeZoneList"><select id="atz" name="atz">
+		      <option value="">Choose Time Zone Name (or type in time zone abbreviation)</option>
+	          <option value="ACDT">ACDT Australian Central Daylight Savings Time UTC+10:30</option>
+              <option value="ACST">ACST Australian Central Standard Time UTC+09:30</option>
+              <option value="ACT">ACT Acre Time UTC-05</option>
+              <option value="ADT">ADT Atlantic Daylight Time UTC-03</option>
+              <option value="AEDT">AEDT Australian Eastern Daylight Savings Time UTC+11</option>
+              <option value="AEST">AEST Australian Eastern Standard Time UTC+10</option>
+              <option value="AFT">AFT Afghanistan Time UTC+04:30</option>
+              <option value="AKDT">AKDT Alaska Daylight Time UTC-08</option>
+              <option value="AKST">AKST Alaska Standard Time UTC-09</option>
+              <option value="AMST">AMST Amazon Summer Time (Brazil) UTC-03</option>
+              <option value="AMTamazon">AMT Amazon Time (Brazil) UTC-04</option>
+              <option value="AMTarmenia">AMT Armenia Time UTC+04</option>
+              <option value="ART">ART Argentina Time UTC-03</option>
+              <option value="ASTarabia">AST Arabia Standard Time UTC+03</option>
+              <option value="ASTatlantic">AST Atlantic Standard Time UTC-04</option>
+              <option value="AWST">AWST Australian Western Standard Time UTC+08</option>
+              <option value="AZOST">AZOST Azores Summer Time UTC±00</option>
+              <option value="AZOT">AZOT Azores Standard Time UTC-01</option>
+              <option value="AZT">AZT Azerbaijan Time UTC+04</option>
+              <option value="BDT">BDT Brunei Time UTC+08</option>
+              <option value="BIOT">BIOT British Indian Ocean Time UTC+06</option>
+              <option value="BIT">BIT Baker Island Time UTC-12</option>
+              <option value="BOT">BOT Bolivia Time UTC-04</option>
+              <option value="BRST">BRST Brasilia Summer Time UTC-02</option>
+              <option value="BRT">BRT Brasilia Time UTC-03</option>
+              <option value="BSTbanga">BST Bangladesh Standard Time UTC+06</option>
+              <option value="BSTbougain">BST Bougainville Standard Time UTC+11</option>
+              <option value="BSTbritish">BST British Summer Time UTC+01</option>
+              <option value="BTT">BTT Bhutan Time UTC+06</option>
+              <option value="CAT">CAT Central Africa Time UTC+02</option>
+              <option value="CCT">CCT Cocos Islands Time UTC+06:30</option>
+              <option value="CDTna">CDT Central Daylight Time (North America) UTC-05</option>
+              <option value="CDTcuba">CDT Cuba Daylight Time UTC-04</option>
+              <option value="CEST">CEST Central European Summer Time (Cf. HAEC) UTC+02</option>
+              <option value="CET">CET Central European Time UTC+01</option>
+              <option value="CHADT">CHADT Chatham Daylight Time UTC+13:45</option>
+              <option value="CHAST">CHAST Chatham Standard Time UTC+12:45</option>
+              <option value="CHOT">CHOT Choibalsan Standard Time UTC+08</option>
+              <option value="CHOST">CHOST Choibalsan Summer Time UTC+09</option>
+              <option value="CHST">CHST Chamorro Standard Time UTC+10</option>
+              <option value="CHUT">CHUT Chuuk Time UTC+10</option>
+              <option value="CIST">CIST Clipperton Island Standard Time UTC-08</option>
+              <option value="CIT">CIT Central Indonesia Time UTC+08</option>
+              <option value="CKT">CKT Cook Island Time UTC-10</option>
+              <option value="CLST">CLST Chile Summer Time UTC-03</option>
+              <option value="CLT">CLT Chile Standard Time UTC-04</option>
+              <option value="COST">COST Colombia Summer Time UTC-04</option>
+              <option value="COT">COT Colombia Time UTC-05</option>
+              <option value="CSTna">CST Central Standard Time (North America) UTC-06</option>
+              <option value="CSTchina">CST China Standard Time UTC+08</option>
+              <option value="ACST">ACST Central Standard Time (Australia) UTC+09:30</option>
+              <option value="ACDT">ACDT Central Summer Time (Australia) UTC+10:30</option>
+              <option value="CST">CST Cuba Standard Time UTC-05</option>
+              <option value="CT">CT China time UTC+08</option>
+              <option value="CVT">CVT Cape Verde Time UTC-01</option>
+              <option value="CXT">CXT Christmas Island Time UTC+07</option>
+              <option value="DAVT">DAVT Davis Time UTC+07</option>
+              <option value="DDUT">DDUT Dumont d'Urville Time UTC+10</option>
+              <option value="EASST">EASST Easter Island Summer Time UTC-05</option>
+              <option value="EAST">EAST Easter Island Standard Time UTC-06</option>
+              <option value="EAT">EAT East Africa Time UTC+03</option>
+              <option value="ECTcaribb">ECT Eastern Caribbean Time UTC-04</option>
+              <option value="ECTecuador">ECT Ecuador Time UTC-05</option>
+              <option value="EDT">EDT Eastern Daylight Time (North America) UTC-04</option>
+              <option value="AEDT">AEDT Eastern Summer Time (Australia) UTC+11</option>
+              <option value="EEST">EEST Eastern European Summer Time UTC+03</option>
+              <option value="EET">EET Eastern European Time UTC+02</option>
+              <option value="EGST">EGST Eastern Greenland Summer Time UTC±00</option>
+              <option value="EGT">EGT Eastern Greenland Time UTC-01</option>
+              <option value="EIT">EIT Eastern Indonesian Time UTC+09</option>
+              <option value="EST">EST Eastern Standard Time (North America) UTC-05</option>
+              <option value="AEST">AEST Eastern Standard Time (Australia) UTC+10</option>
+              <option value="FET">FET Further-eastern European Time UTC+03</option>
+              <option value="FJT">FJT Fiji Time UTC+12</option>
+              <option value="FKST">FKST Falkland Islands Summer Time UTC-03</option>
+              <option value="FKT">FKT Falkland Islands Time UTC-04</option>
+              <option value="FNT">FNT Fernando de Noronha Time UTC-02</option>
+              <option value="GALT">GALT Galapagos Time UTC-06</option>
+              <option value="GAMT">GAMT Gambier Islands UTC-09</option>
+              <option value="GET">GET Georgia Standard Time UTC+04</option>
+              <option value="GFT">GFT French Guiana Time UTC-03</option>
+              <option value="GILT">GILT Gilbert Island Time UTC+12</option>
+              <option value="GIT">GIT Gambier Island Time UTC-09</option>
+              <option value="GMT">GMT Greenwich Mean Time UTC±00</option>
+              <option value="GSTgeorgia">GST South Georgia and the South Sandwich Islands UTC-02</option>
+              <option value="GSTgulf">GST Gulf Standard Time UTC+04</option>
+              <option value="GYT">GYT Guyana Time UTC-04</option>
+              <option value="HADT">HADT Hawaii-Aleutian Daylight Time UTC-09</option>
+              <option value="HAEC">HAEC Heure Avancée d'Europe Centrale UTC+02</option>
+              <option value="HAST">HAST Hawaii-Aleutian Standard Time UTC-10</option>
+              <option value="HKT">HKT Hong Kong Time UTC+08</option>
+              <option value="HMT">HMT Heard and McDonald Islands Time UTC+05</option>
+              <option value="HOVST">HOVST Khovd Summer Time UTC+08</option>
+              <option value="HOVT">HOVT Khovd Standard Time UTC+07</option>
+              <option value="ICT">ICT Indochina Time UTC+07</option>
+              <option value="IDT">IDT Israel Daylight Time UTC+03</option>
+              <option value="IOT">IOT Indian Ocean Time UTC+03</option>
+              <option value="IRDT">IRDT Iran Daylight Time UTC+04:30</option>
+              <option value="IRKT">IRKT Irkutsk Time UTC+08</option>
+              <option value="IRST">IRST Iran Standard Time UTC+03:30</option>
+              <option value="ISTindia">IST Indian Standard Time UTC+05:30</option>
+              <option value="ISTirish">IST Irish Standard Time UTC+01</option>
+              <option value="ISTisrael">IST Israel Standard Time UTC+02</option>
+              <option value="JST">JST Japan Standard Time UTC+09</option>
+              <option value="KGT">KGT Kyrgyzstan time UTC+06</option>
+              <option value="KOST">KOST Kosrae Time UTC+11</option>
+              <option value="KRAT">KRAT Krasnoyarsk Time UTC+07</option>
+              <option value="KST">KST Korea Standard Time UTC+09</option>
+              <option value="LHSTstandard">LHST Lord Howe Standard Time UTC+10:30</option>
+              <option value="LHSTsummer">LHST Lord Howe Summer Time UTC+11</option>
+              <option value="LINT">LINT Line Islands Time UTC+14</option>
+              <option value="MAGT">MAGT Magadan Time UTC+12</option>
+              <option value="MART">MART Marquesas Islands Time UTC-09:30</option>
+              <option value="MAWT">MAWT Mawson Station Time UTC+05</option>
+              <option value="MDT">MDT Mountain Daylight Time (North America) UTC-06</option>
+              <option value="MET">MET Middle European Time UTC+01</option>
+              <option value="MEST">MEST Middle European Summer Time UTC+02</option>
+              <option value="MHT">MHT Marshall Islands UTC+12</option>
+              <option value="MIST">MIST Macquarie Island Station Time UTC+11</option>
+              <option value="MIT">MIT Marquesas Islands Time UTC-09:30</option>
+              <option value="MMT">MMT Myanmar Standard Time UTC+06:30</option>
+              <option value="MSK">MSK Moscow Time UTC+03</option>
+              <option value="MSTmalaysia">MST Malaysia Standard Time UTC+08</option>
+              <option value="MSTna">MST Mountain Standard Time (North America) UTC-07</option>
+              <option value="MUT">MUT Mauritius Time UTC+04</option>
+              <option value="MVT">MVT Maldives Time UTC+05</option>
+              <option value="MYT">MYT Malaysia Time UTC+08</option>
+              <option value="NCT">NCT New Caledonia Time UTC+11</option>
+              <option value="NDT">NDT Newfoundland Daylight Time UTC-02:30</option>
+              <option value="NFT">NFT Norfolk Time UTC+11</option>
+              <option value="NPT">NPT Nepal Time UTC+05:45</option>
+              <option value="NST">NST Newfoundland Standard Time UTC-03:30</option>
+              <option value="NT">NT Newfoundland Time UTC-03:30</option>
+              <option value="NUT">NUT Niue Time UTC-11</option>
+              <option value="NZDT">NZDT New Zealand Daylight Time UTC+13</option>
+              <option value="NZST">NZST New Zealand Standard Time UTC+12</option>
+              <option value="OMST">OMST Omsk Time UTC+06</option>
+              <option value="ORAT">ORAT Oral Time UTC+05</option>
+              <option value="PDT">PDT Pacific Daylight Time (North America) UTC-07</option>
+              <option value="PET">PET Peru Time UTC-05</option>
+              <option value="PETT">PETT Kamchatka Time UTC+12</option>
+              <option value="PGT">PGT Papua New Guinea Time UTC+10</option>
+              <option value="PHOT">PHOT Phoenix Island Time UTC+13</option>
+              <option value="PHT">PHT Philippine Time UTC+08</option>
+              <option value="PKT">PKT Pakistan Standard Time UTC+05</option>
+              <option value="PMDT">PMDT Saint Pierre and Miquelon Daylight time UTC-02</option>
+              <option value="PMST">PMST Saint Pierre and Miquelon Standard Time UTC-03</option>
+              <option value="PONT">PONT Pohnpei Standard Time UTC+11</option>
+              <option value="PSTna">PST Pacific Standard Time (North America) UTC-08</option>
+              <option value="PSTphil">PST Philippine Standard Time UTC+08</option>
+              <option value="PYST">PYST Paraguay Summer Time (South America) UTC-03</option>
+              <option value="PYT">PYT Paraguay Time (South America) UTC-04</option>
+              <option value="RET">RET Réunion Time UTC+04</option>
+              <option value="ROTT">ROTT Rothera Research Station Time UTC-03</option>
+              <option value="SAKT">SAKT Sakhalin Island time UTC+11</option>
+              <option value="SAMT">SAMT Samara Time UTC+04</option>
+              <option value="SAST">SAST South African Standard Time UTC+02</option>
+              <option value="SBT">SBT Solomon Islands Time UTC+11</option>
+              <option value="SCT">SCT Seychelles Time UTC+04</option>
+              <option value="SGT">SGT Singapore Time UTC+08</option>
+              <option value="SLST">SLST Sri Lanka Standard Time UTC+05:30</option>
+              <option value="SRET">SRET Srednekolymsk Time UTC+11</option>
+              <option value="SRT">SRT Suriname Time UTC-03</option>
+              <option value="SSTsamoa">SST Samoa Standard Time UTC-11</option>
+              <option value="SSTsing">SST Singapore Standard Time UTC+08</option>
+              <option value="SYOT">SYOT Showa Station Time UTC+03</option>
+              <option value="TAHT">TAHT Tahiti Time UTC-10</option>
+              <option value="THA">THA Thailand Standard Time UTC+07</option>
+              <option value="TFT">TFT Indian/Kerguelen UTC+05</option>
+              <option value="TJT">TJT Tajikistan Time UTC+05</option>
+              <option value="TKT">TKT Tokelau Time UTC+13</option>
+              <option value="TLT">TLT Timor Leste Time UTC+09</option>
+              <option value="TMT">TMT Turkmenistan Time UTC+05</option>
+              <option value="TRT">TRT Turkey Time UTC+03</option>
+              <option value="TOT">TOT Tonga Time UTC+13</option>
+              <option value="TVT">TVT Tuvalu Time UTC+12</option>
+              <option value="ULAST">ULAST Ulaanbaatar Summer Time UTC+09</option>
+              <option value="ULAT">ULAT Ulaanbaatar Standard Time UTC+08</option>
+              <option value="USZ1">USZ1 Kaliningrad Time UTC+02</option>
+              <option value="UTC">UTC Coordinated Universal Time UTC±00</option>
+              <option value="UYST">UYST Uruguay Summer Time UTC-02</option>
+              <option value="UYT">UYT Uruguay Standard Time UTC-03</option>
+              <option value="UZT">UZT Uzbekistan Time UTC+05</option>
+              <option value="VET">VET Venezuelan Standard Time UTC-04</option>
+              <option value="VLAT">VLAT Vladivostok Time UTC+10</option>
+              <option value="VOLT">VOLT Volgograd Time UTC+04</option>
+              <option value="VOST">VOST Vostok Station Time UTC+06</option>
+              <option value="VUT">VUT Vanuatu Time UTC+11</option>
+              <option value="WAKT">WAKT Wake Island Time UTC+12</option>
+              <option value="WAST">WAST West Africa Summer Time UTC+02</option>
+              <option value="WAT">WAT West Africa Time UTC+01</option>
+              <option value="WEST">WEST Western European Summer Time UTC+01</option>
+              <option value="WET">WET Western European Time UTC±00</option>
+              <option value="WIT">WIT Western Indonesian Time UTC+07</option>
+              <option value="WST">WST Western Standard Time UTC+08</option>
+              <option value="YAKT">YAKT Yakutsk Time UTC+09</option>
+              <option value="YEKT">YEKT Yekaterinburg Time UTC+05</option>
+    </select></div>
+    <div><label for="utz">Your Time Zone</label></div>
+	<div id="userTimeZoneList"><select id="utz" name="utz">
+	</div>
+    <input type="submit" value="Submit">
+    </form>
+    </div>
+	<p>The current time is:</p><h1 id="currentTime"></h1>
+    <!--Use absolute URL for testing.
+    <script src="/toz/js/moment.js"></script>-->
+    <script src="http://pokeai.net/toz/js/moment.js"></script>
+	<script type='text/javascript'>
+	var datetime;
+	var outputFormat = "dddd, MMMM Do YYYY [at] h:mm:ss a";
+	
+	function update (){
+	  datetime.html(moment().format(outputFormat));
+	 }
+	
+	$(document).ready(function() {
+	  $("#userTimeZoneList").html($("#timeZoneList").html());
+	  datetime = $('#currentTime');
+	  update();
+	  setInterval(update, 1000);
+	});
+	document.getElementById("currentTime").innerHTML = datetime;
+    </script>
+	</body>
+</html>
