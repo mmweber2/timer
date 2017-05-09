@@ -33,6 +33,9 @@ ul {
   overflow: hidden;
   background-color: #4682B4;
 }
+span {
+  margin: 20px;
+}
 div.form {
   margin: auto;
   width: 75%;
@@ -40,7 +43,7 @@ div.form {
   border-radius: 8px;
   margin-top: 30px;
   margin-bottom: 50px;
-  font-size: 2em;
+  font-size: 1em;
 }
 div.fixed {
     position: fixed;
@@ -49,19 +52,19 @@ div.fixed {
     width: 300px;
     border: 3px solid #4682B4;
     border-radius: 4px;
-    font-size: 0.5em;
+    font-size: 1em;
 }
   
 input[type=text], select {
   font-size: .5em;
   margin: auto;
   width: 400px;
-  padding: 12px 20px;
+  padding: 12px 8px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #4682B4;
   border-radius: 4px;
-  #box-sizing: border-boxXXX;
+  box-sizing: border-box;
 }
 select{
     -webkit-appearance: none;
@@ -88,9 +91,8 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
-
-
 	</style>
+	<link rel='stylesheet' type='text/css'href='http://pokeai.net/toz/js/timepicki.css'/>
 		<title>Create An Event</title>
 		<script></script>
 		<ul>
@@ -103,7 +105,8 @@ input[type=submit] {
 	</head>
 	<body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<div class="form">
+    <script type='text/javascript'src='http://pokeai.net/toz/js/timepicki.js'></script>
+    <div class="form">
 	  <form action="/submit.html">
 	    <div><label for="lname">Auction Name</label></div>
 	    <div><input type="text" id="lname" name="labelname" placeholder="What would you like to call this auction?"></div>
@@ -113,7 +116,7 @@ input[type=submit] {
 	
 	    <div><label for="atz">Auction Time Zone</label></div>
 	    <div id="timeZoneList"><select id="atz" name="atz">
-		      <option value="">Choose Time Zone Name (or type in time zone abbreviation)</option>
+		      <option value="">Choose Time Zone Name (or start typing time zone abbreviation)</option>
 	          <option value="ACDT">ACDT Australian Central Daylight Savings Time UTC+10:30</option>
               <option value="ACST">ACST Australian Central Standard Time UTC+09:30</option>
               <option value="ACT">ACT Acre Time UTC-05</option>
@@ -312,24 +315,53 @@ input[type=submit] {
               <option value="YAKT">YAKT Yakutsk Time UTC+09</option>
               <option value="YEKT">YEKT Yekaterinburg Time UTC+05</option>
     </select></div>
+    <div><label for="aet">Auction End Time</label></div>
+    <input id='timepicker' type='text' name='timepicker'/>
+    <script> $('#timepicker').timepicki();</script>
     <div><label for="utz">Your Time Zone</label></div>
-	<div id="userTimeZoneList"><select id="utz" name="utz">
-	</div>
-    <input type="submit" value="Submit">
+	<div id="userTimeZoneList"><select id="utz" name="utz"></select></div>
+	<div><span><input type="checkbox" id="sametime" onclick="updateTimeZone(this.form)">Same as above<br></span></div>
+	<div><input type="checkbox" name="agree" value="checked">I understand that this timer is provided solely as a convenience, and agree not to hold this site responsible for any auctions missed or lost as a result of use of this service.<br></div>
+	<input type="submit" value="Submit">
     </form>
-    </div>
+    <div><p>Your detected time zone is:</p><p id="userTime"></p></div>
+    </div>s
     <div class="fixed">
 	<p>The current time is:</p><p id="currentTime"></p></div>
     <!--Use absolute URL for testing.
     <script src="/toz/js/moment.js"></script>-->
+    <script src="http://pokeai.net/toz/js/moment-timezone-with-data.js"></script>
     <script src="http://pokeai.net/toz/js/moment.js"></script>
 	<script type='text/javascript'>
 	var datetime;
 	var outputFormat = "dddd, MMMM Do YYYY [at] h:mm:ss a";
+	//var userTimeZone = moment.tz.guess().name;
 	
 	function update (){
 	  datetime.html(moment().format(outputFormat));
 	 }
+	
+	function updateTimeZone(form) {
+	  if (form.sametime.checked === true) {
+	    var aucTimeZone = document.getElementById("atz");
+	    var userTimeZone = document.getElementById("utz");
+	    console.log(userTimeZone);
+	    userTimeZone.selectedIndex = aucTimeZone.selectedIndex;
+	    console.log("Form.atz is ", aucTimeZone.options[aucTimeZone.selectedIndex].value);
+	    console.log("Form.utz is ", userTimeZone.options[userTimeZone.selectedIndex].value);
+	    for (var i = 0; i < timeZones.options.length; i++) {
+	      if (form.timeZones.options[i].value === aucTimeZone) {
+	        document.getElementById("userTimeZoneList").options[i].selected = true;
+	      }
+	    }
+	  } // TODO: Keep track of auction index ID and use it for local index?
+	}
+		//$("#userTimeZoneList").val(document.getElementById("atz").value).trigger('change');
+		//$("utz").val(document.getElementById("atz").value);
+	    //document.getElementById("userTimeZoneList").value = document.getElementById("atz").value;
+		//console.log(document.getElementById("atz").value);
+		//console.log(document.getElementById("userTimeZoneList").value);
+	    //console.log($("#userTimeZoneList").val());
 	
 	$(document).ready(function() {
 	  $("#userTimeZoneList").html($("#timeZoneList").html());
@@ -338,6 +370,7 @@ input[type=submit] {
 	  setInterval(update, 1000);
 	});
 	document.getElementById("currentTime").innerHTML = datetime;
+	//document.getElementById("userTime").innerHTML = userTimeZone;
     </script>
 	</body>
 </html>
