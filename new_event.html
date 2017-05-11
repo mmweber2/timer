@@ -20,7 +20,7 @@ li a {
   color: white;
   text-align: center;
   padding: 14px 50px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-decoration: none;
 }
 li a:hover {
@@ -84,6 +84,7 @@ input[type=submit] {
   display: block;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 60px;
   width: 50%;
   background-color: green;
   color: GreenYellow;
@@ -110,7 +111,7 @@ input[type=submit] {
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <div class="form">
-	  <form action="/submit.html">
+	  <form action="/submit.html" onsubmit="return verifyAgreement(this);">
 	    <div><label for="lname">Auction Name</label></div>
 	    <div><input type="text" id="lname" name="labelname" placeholder="What would you like to call this auction?"></div>
 	
@@ -320,7 +321,7 @@ input[type=submit] {
     </select></div>
 
     <div><label for="aet">Auction End Date</label></div>
-    <input id='datepicker' type='text' name='datepicker' style='width:10%;'/>
+    <input id='datepicker' type='text' name='datepicker' style='width:20%;'/>
     <script>
     $( "#datepicker" ).datepicker({
       dateFormat: "D, d M yy"
@@ -355,6 +356,20 @@ input[type=submit] {
 	  setInterval(update, 1000);
 	});
 	document.getElementById("currentTime").innerHTML = datetime;
+	
+	//Prevent accidental form submissions by Enter key
+	$(document).on("keypress", ":input:not([type=submit])", function(event) {
+	  return event.keyCode != 13;
+    });
+
+    function verifyAgreement(formName) {
+      if (formName.agree.checked === false) {
+        alert('Please agree to the terms in order to use this service.');
+        return false;
+      } else {
+        return true;
+      }
+    }
     </script>
 	</body>
 </html>
