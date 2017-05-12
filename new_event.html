@@ -92,6 +92,13 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
+
+#errorMessage {
+  color: red;
+}
+.time_pick {
+  display: inline-block;
+}
 	</style>
 	<link rel='stylesheet' type='text/css'href='http://pokeai.net/toz/js/timepicki.css'/>
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -320,17 +327,17 @@ input[type=submit] {
               <option value="YEKT">YEKT Yekaterinburg Time UTC+05</option>
     </select></div>
 
-    <div><label for="aet">Auction End Date</label></div>
+    <div><label for="aet">Auction End Date:</label>
     <input id='datepicker' type='text' name='datepicker' style='width:20%;'/>
     <script>
     $( "#datepicker" ).datepicker({
       dateFormat: "D, d M yy"
     });
-    </script>
+    </script></div>
 
-    <div><label for="aet">Auction End Time</label></div>
-    <input id='timepicker' type='text' name='timepicker' style='width:10%;'/>
-    <script> $('#timepicker').timepicki();</script>
+    <div><label for="aet">Auction End Time:</label>
+    <input id='timepicker' type='text' name='timepicker' style='width:262px;'/></div>
+    <script> $('#timepicker').timepicki();</script><span id="errorMessage"></span>
 
 	<div><input style="margin:10px;" type="checkbox" name="agree" value="checked">I understand that this timer is provided solely as a convenience,<br>and agree not to hold this site responsible for any auctions<br>missed or lost as a result of use of this service.</span></div>
 	<input style="position:absolute;left:10%;" type="submit" value="Create Timer">
@@ -362,9 +369,10 @@ input[type=submit] {
 	  return event.keyCode != 13;
     });
 
+    //Prevent form submission when terms have not been agreed to
     function verifyAgreement(formName) {
       if (formName.agree.checked === false) {
-        alert('Please agree to the terms in order to use this service.');
+        document.getElementById("errorMessage").innerHTML="Please agree to the terms in order to use this service.";
         return false;
       } else {
         return true;
